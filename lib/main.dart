@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'theme/theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -20,7 +21,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset('assets/image_splash.png'),
+      body: Center(
+        child: Text(
+          'Hello world!',
+          style: secondaryTextStyle.copyWith(
+            fontSize: 30,
+            color: priceColor,
+          ),
+        ),
+      ),
     );
   }
 }
