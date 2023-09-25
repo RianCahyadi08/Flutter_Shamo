@@ -152,10 +152,6 @@ class SignInPage extends StatelessWidget {
         margin: const EdgeInsets.only(
           top: 30,
         ),
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(12),
-        //   color: primaryColor,
-        // ),
         child: TextButton(
           onPressed: () => {},
           style: TextButton.styleFrom(
@@ -189,10 +185,15 @@ class SignInPage extends StatelessWidget {
                 fontSize: 12,
               ),
             ),
-            Text(
-              'Sign up',
-              style: purpleTextStyle.copyWith(
-                fontSize: 12,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/sign-up');
+              },
+              child: Text(
+                'Sign up',
+                style: purpleTextStyle.copyWith(
+                  fontSize: 12,
+                ),
               ),
             ),
           ],
