@@ -263,7 +263,9 @@ class _SignUpPageState extends State<SignUpPage> {
         top: 30,
       ),
       child: TextButton(
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.pushNamed(context, '/home'),
+        },
         style: TextButton.styleFrom(
           backgroundColor: primaryColor,
           shape: RoundedRectangleBorder(
