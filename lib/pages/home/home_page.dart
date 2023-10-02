@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamo/theme/theme.dart';
+import 'package:shamo/widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -175,10 +176,218 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget popularProductTitle() {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 30,
+        horizontal: 30,
+      ),
+      child: Text(
+        'Popular Products',
+        style: primaryTextStyle.copyWith(
+          fontSize: 22,
+          fontWeight: semiBold,
+        ),
+      ),
+    );
+  }
+
+  Widget popularProduct() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          SizedBox(
+            width: defaultMargin,
+          ),
+          const Row(
+            children: [
+              ProductCard(),
+              ProductCard(),
+              ProductCard(),
+              ProductCard(),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget popularProducts() {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 30,
+        vertical: 30,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Popular Products',
+            style: primaryTextStyle.copyWith(
+              fontSize: 22,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(height: 14),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: primaryTextColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Image(
+                            image: AssetImage('assets/image_1.png'),
+                            width: 215,
+                            height: 215,
+                          ),
+                          Text(
+                            'Hiking',
+                            style: secondaryTextStyle.copyWith(
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Court vision 2.0'.toUpperCase(),
+                            style: nameProductStyle.copyWith(
+                              fontSize: 18,
+                              fontWeight: semiBold,
+                              letterSpacing: 0.18,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            '\$58,67',
+                            style: priceTextStyle.copyWith(
+                              fontSize: 14,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 30),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: primaryTextColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Image(
+                            image: AssetImage('assets/image_2.png'),
+                            width: 215,
+                            height: 215,
+                          ),
+                          Text(
+                            'Hiking',
+                            style: secondaryTextStyle.copyWith(
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Court vision 2.0'.toUpperCase(),
+                            style: nameProductStyle.copyWith(
+                              fontSize: 18,
+                              fontWeight: semiBold,
+                              letterSpacing: 0.18,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            '\$58,67',
+                            style: priceTextStyle.copyWith(
+                              fontSize: 14,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 30),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: primaryTextColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Image(
+                            image: AssetImage('assets/image_1.png'),
+                            width: 215,
+                            height: 215,
+                          ),
+                          Text(
+                            'Hiking',
+                            style: secondaryTextStyle.copyWith(
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Court vision 2.0'.toUpperCase(),
+                            style: nameProductStyle.copyWith(
+                              fontSize: 18,
+                              fontWeight: semiBold,
+                              letterSpacing: 0.18,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            '\$58,67',
+                            style: priceTextStyle.copyWith(
+                              fontSize: 14,
+                              fontWeight: medium,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [header(), categories()],
+      children: [
+        header(),
+        categories(),
+        popularProductTitle(),
+        popularProduct(),
+      ],
     );
   }
 }
