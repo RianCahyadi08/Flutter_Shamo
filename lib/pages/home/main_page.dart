@@ -47,13 +47,15 @@ class _MainPageState extends State<MainPage> {
 
   Widget customButtonNav() {
     return ClipRRect(
+      clipBehavior: Clip.none,
       borderRadius: const BorderRadius.vertical(
         top: Radius.circular(30),
       ),
       child: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 12,
-        clipBehavior: Clip.antiAlias,
+        // clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: (value) {
