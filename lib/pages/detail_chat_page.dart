@@ -4,40 +4,113 @@ import 'package:shamo/theme/theme.dart';
 class DetailChatPage extends StatelessWidget {
   const DetailChatPage({super.key});
 
-  Widget chatInput() {
+  Widget productReview() {
     return Container(
-      margin: const EdgeInsets.all(20),
+      width: 225,
+      height: 70,
+      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: backgroundColor5,
+        borderRadius: BorderRadius.circular(
+          12,
+        ),
+        border: Border.all(
+          color: primaryColor,
+        ),
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Container(
-              height: 45,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
-              ),
-              decoration: BoxDecoration(
-                color: backgroundColor4,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: TextFormField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Reply message . . .',
-                    hintStyle: subtitleTextStyle.copyWith(fontSize: 14),
-                  ),
-                ),
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              'assets/product_1.png',
+              width: 54,
+              height: 54,
             ),
           ),
           const SizedBox(
             width: 10,
           ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Court Vision',
+                  overflow: TextOverflow.ellipsis,
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 14,
+                    fontWeight: reguler,
+                    letterSpacing: 0.14,
+                  ),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  '\$57,15',
+                  style: priceTextStyle.copyWith(
+                    fontSize: 14,
+                    fontWeight: medium,
+                    letterSpacing: 0.14,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Image.asset(
-            'assets/btn_send.png',
-            width: 45,
-            height: 45,
+            'assets/btn_close.png',
+            width: 22,
           )
+        ],
+      ),
+    );
+  }
+
+  Widget chatInput() {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          productReview(),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 45,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color: backgroundColor4,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: TextFormField(
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Reply message . . .',
+                        hintStyle: subtitleTextStyle.copyWith(fontSize: 14),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Image.asset(
+                'assets/btn_send.png',
+                width: 45,
+                height: 45,
+              )
+            ],
+          ),
         ],
       ),
     );
