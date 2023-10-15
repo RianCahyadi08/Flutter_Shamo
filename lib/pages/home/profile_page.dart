@@ -7,7 +7,7 @@ class ProfilePage extends StatelessWidget {
   Widget header() {
     return AppBar(
       backgroundColor: backgroundColor1,
-      // centerTitle: true,
+      elevation: 0,
       automaticallyImplyLeading: false,
       flexibleSpace: SafeArea(
         child: Container(
@@ -55,35 +55,74 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      // actions: [
-      //   Image.asset(
-      //     'assets/image_profile.png',
-      //   ),
-      //   Column(
-      //     children: [
-      //       Text(
-      //         'Hallo, Alex',
-      //       ),
-      //       Text(
-      //         '@alexkeinn',
-      //       )
-      //     ],
-      //   ),
-      //   Image.asset(
-      //     'assets/btn_exit.png',
-      //     width: 20,
-      //     height: 20,
-      //   )
-      // ],
-      elevation: 0,
-      // title: Text(
-      //   'Favourite Shoes',
-      //   style: primaryTextStyle.copyWith(
-      //     fontSize: 18,
-      //     fontWeight: medium,
-      //     letterSpacing: 0.18,
-      //   ),
-      // ),
+    );
+  }
+
+  Widget menuItem(String text) {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 16,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            text,
+            style: secondaryTextStyle.copyWith(
+              fontSize: 13,
+            ),
+          ),
+          Icon(
+            Icons.chevron_right,
+            color: primaryTextColor,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget content() {
+    return Expanded(
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.only(
+          left: 30,
+          right: 30,
+          top: 20,
+        ),
+        color: backgroundColor3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Account',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            menuItem('Edit Profile'),
+            menuItem('Your Orders'),
+            menuItem('Help'),
+            const SizedBox(
+              height: 35,
+            ),
+            Text(
+              'General',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            menuItem('Privacy & Policy'),
+            menuItem('Term of Service'),
+            menuItem('Rate App'),
+          ],
+        ),
+      ),
     );
   }
 
@@ -92,6 +131,7 @@ class ProfilePage extends StatelessWidget {
     return Column(
       children: [
         header(),
+        content(),
       ],
     );
   }
