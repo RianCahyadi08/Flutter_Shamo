@@ -29,9 +29,97 @@ class _ProductPageState extends State<ProductPage> {
   ];
 
   int currentIndex = 0;
+  bool isWishlist = false;
 
   @override
   Widget build(BuildContext context) {
+    Future<void> showSuccessDialog() async {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => SizedBox(
+          width: MediaQuery.of(context).size.width - (2 * 30),
+          child: AlertDialog(
+            backgroundColor: backgroundColor3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                30,
+              ),
+            ),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/icon_success.png',
+                    width: 100,
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Hurray :)',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'Item added successfully',
+                    style: secondaryTextStyle.copyWith(
+                      fontSize: 14,
+                      letterSpacing: 0.14,
+                      fontWeight: reguler,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 154,
+                    height: 44,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        backgroundColor: primaryColor,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 10,
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'View My Cart',
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     Widget indicator(index) {
       return Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),
@@ -169,10 +257,40 @@ class _ProductPageState extends State<ProductPage> {
                       ],
                     ),
                   ),
-                  Image.asset(
-                    'assets/btn_wishlist.png',
-                    width: 46,
-                    height: 46,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isWishlist = !isWishlist;
+                      });
+                      if (isWishlist) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: secondaryColor,
+                            content: const Text(
+                              'Has been added to the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: alertColor,
+                            content: const Text(
+                              'Has been removed from the Wishlist',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Image.asset(
+                      isWishlist
+                          ? 'assets/btn_wishlist_active.png'
+                          : 'assets/btn_wishlist.png',
+                      width: 46,
+                      height: 46,
+                    ),
                   ),
                 ],
               ),
@@ -288,12 +406,17 @@ class _ProductPageState extends State<ProductPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 54,
-                    height: 54,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/btn_chat.png'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail-chat');
+                    },
+                    child: Container(
+                      width: 54,
+                      height: 54,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/btn_chat.png'),
+                        ),
                       ),
                     ),
                   ),
@@ -309,7 +432,9 @@ class _ProductPageState extends State<ProductPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          showSuccessDialog();
+                        },
                         child: Text(
                           'Add to Cart',
                           style: primaryTextStyle.copyWith(

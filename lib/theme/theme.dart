@@ -44,6 +44,10 @@ TextStyle nameProductStyle = GoogleFonts.poppins(
   color: nameProductColor,
 );
 
+TextStyle backgroundColorStyle5 = GoogleFonts.poppins(
+  color: backgroundColor5,
+);
+
 FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
